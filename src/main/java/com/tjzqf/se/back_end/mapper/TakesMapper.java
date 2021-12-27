@@ -1,7 +1,5 @@
 package com.tjzqf.se.back_end.mapper;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.tjzqf.se.back_end.entity.Student;
 import com.tjzqf.se.back_end.entity.Takes;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -11,9 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
 public interface TakesMapper extends BaseMapper<Takes> {
-    Page<Takes> getAll(Page<Takes> iPage);
 
 }

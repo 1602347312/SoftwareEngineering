@@ -1,6 +1,6 @@
 package com.tjzqf.se.back_end.mapper;
 
-import com.tjzqf.se.back_end.entity.Teaches;
+import com.tjzqf.se.back_end.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
-public interface TeachesMapper extends BaseMapper<Teaches> {
+public interface UserMapper extends BaseMapper<User> {
 
 }

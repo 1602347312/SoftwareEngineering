@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
 @Data
   @EqualsAndHashCode(callSuper = true)
@@ -31,9 +31,9 @@ import lombok.EqualsAndHashCode;
 
     private Double materialSize;
 
-    private String materialUploader;
+    private Integer materialUploader;
 
-    private Blob materialContent;
+    private String materialContent;
 
     private String materialClassId;
 

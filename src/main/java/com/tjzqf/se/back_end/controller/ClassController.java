@@ -1,10 +1,12 @@
 package com.tjzqf.se.back_end.controller;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import com.tjzqf.se.back_end.controller.BaseController;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -12,11 +14,12 @@ import com.tjzqf.se.back_end.controller.BaseController;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
-@Controller
+@RestController
 @RequestMapping("/back_end/class")
 public class ClassController extends BaseController {
+//    @GetMapping
 
 }
 

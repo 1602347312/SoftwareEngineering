@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
 @Service
 public class SignInServiceImpl extends ServiceImpl<SignInMapper, SignIn> implements SignInService {

@@ -10,21 +10,23 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
 @Data
   @EqualsAndHashCode(callSuper = true)
-    public class Teacher extends BaseEntity {
+    public class User extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-      private Integer userId;
+      private String userId;
 
-    private Integer teacherId;
+    private Integer realId;
 
-    private String teacherName;
+    private String realName;
 
     private String password;
+
+    private Boolean type;
 
 
 }

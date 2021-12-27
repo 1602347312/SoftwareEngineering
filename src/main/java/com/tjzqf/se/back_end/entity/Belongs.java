@@ -1,8 +1,11 @@
 package com.tjzqf.se.back_end.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.tjzqf.se.back_end.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 /**
  * <p>
@@ -10,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
 @Data
   @EqualsAndHashCode(callSuper = true)
@@ -21,6 +24,9 @@ import lombok.EqualsAndHashCode;
       private Integer studentId;
 
     private String classId;
+
+  @TableField(exist = false)
+    private List<Class> classes;
 
 
 }

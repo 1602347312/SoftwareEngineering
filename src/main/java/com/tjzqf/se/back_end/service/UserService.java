@@ -1,6 +1,6 @@
 package com.tjzqf.se.back_end.service;
 
-import com.tjzqf.se.back_end.entity.Teacher;
+import com.tjzqf.se.back_end.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zqf
- * @since 2021-12-26
+ * @since 2021-12-27
  */
-public interface TeacherService extends IService<Teacher> {
+public interface UserService extends IService<User> {
 
 }
