@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjzqf.se.back_end.mapper.SignInRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tjzqf.se.back_end.entity.SignInRecord">
+        <id column="sign_in_record_id" property="signInRecordId" />
+        <result column="sign_in_record_title" property="signInRecordTitle" />
+        <result column="sign_in_record_launch_time" property="signInRecordLaunchTime" />
+        <result column="sign_in_record_duration" property="signInRecordDuration" />
+        <result column="sign_in_record_state" property="signInRecordState" />
+        <result column="sign_in_record_class_id" property="signInRecordClassId" />
+    </resultMap>
+
+</mapper>

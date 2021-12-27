@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjzqf.se.back_end.mapper.SubmitsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.tjzqf.se.back_end.entity.Submits">
+        <id column="student_id" property="studentId" />
+        <result column="assignment_id" property="assignmentId" />
+        <result column="submission_time" property="submissionTime" />
+        <result column="content" property="content" />
+        <result column="score" property="score" />
+    </resultMap>
+
+</mapper>
