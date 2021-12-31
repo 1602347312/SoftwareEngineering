@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:title="首页"
+        android:icon="@drawable/ic_home_stu"/>
+    <item android:id="@+id/personal"
+        android:title="个人中心"
+        android:icon="@drawable/ic_personal_stu"/>
+    <item android:id="@+id/course"
+        android:title="课程表"
+        android:icon="@drawable/ic_course_stu"/>
+
+</menu>
