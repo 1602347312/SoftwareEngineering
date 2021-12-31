@@ -11,7 +11,7 @@
         android:text="欢迎使用\n请填写登录信息"
         android:textColor="@color/purple_500"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/login0"
+        app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
