@@ -130,7 +130,6 @@ public class LoginTabFragment extends Fragment {
 
                     }
                 }).start();
-
             }
         });
         return root;

@@ -21,7 +21,6 @@ public class personal_stu_fragment extends Fragment {
 
 
 
-
         return root;
     }
 }
