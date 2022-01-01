@@ -21,8 +21,10 @@ import androidx.fragment.app.Fragment;
 import org.json.JSONObject;
 
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LoginTabFragment extends Fragment {
@@ -43,37 +45,36 @@ public class LoginTabFragment extends Fragment {
         username=root.findViewById(R.id.username);
         password=root.findViewById(R.id.password);
         btn_login=root.findViewById(R.id.btn_login);
-//        //登录按钮的响应
+        //登录按钮的响应
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //捕获按键对应的文本
                 String _name=username.getText().toString();
                 String _password=password.getText().toString();
-
                 new Thread(new Runnable() {
                     @Override
-                    public void run() {
+                    public void run() {                      //未知错误，405  调用不了接口
                         try {
                             FormBody.Builder params = new FormBody.Builder();
-                            params.add("username", _name);
-                            params.add("passwd", _password);
-
-
+                            params.add("password", _password);
+                            params.add("user_id",  _name);
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://47.103.9.250:9000/api/v1/userservice/login")
+                                    .url("http://121.37.172.109:9000/back_end/user/login")
                                     .post(params.build())
                                     .build();
                             Response response = client.newCall(request).execute();
                             String responseData = response.body().string();
                             JSONObject jsonObject = new JSONObject(responseData);
                             Log.d("msg", jsonObject.getString("msg"));
-                            Log.d("object", jsonObject.getString("object"));
-                            String object = jsonObject.getString("object");
-                            String code=jsonObject.getString("code");
+                            Log.d("code", jsonObject.getString("code"));
+                            String code = jsonObject.getString("code");
+//                            String code=jsonObject.getString("code");
+                            JSONObject data= new JSONObject(jsonObject.getString("data"));
 
-                            if(code.equals("200")){
+
+                            if(code.equals("0")){
 
                                 SharedPreferences spf = getActivity().getSharedPreferences("spf",Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor=spf.edit();
@@ -89,11 +90,11 @@ public class LoginTabFragment extends Fragment {
                                         toastCenter.show();
                                     }
                                 });
-                                if(object.equals("1")){//
+                                if(data.getString("type").equals(true)){//true学生 false老师
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("username",_name);
                                     startActivity(intent);
-                                } //教师和学生的判断
+                                }
                                 else {
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("username",_name);
