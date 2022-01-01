@@ -30,15 +30,12 @@
         <entry key="..\:/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/test.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/MyApplication1/app/src/main/res/menu/fragment_stu_course.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/MyApplication1/app/src/main/res/menu/stu_menu.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/drawable/table_h_divider.xml" value="0.36205128205128206" />
-        <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/drawable/table_v_divider.xml" value="0.36205128205128206" />
-        <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/drawable/vie_b.xml" value="0.36205128205128206" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/activity_login.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/activity_main.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/class_item.xml" value="0.19479166666666667" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_login_tab.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_signup_tab.xml" value="0.10925925925925926" />
-        <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_stu_course.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_stu_course.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_stu_home.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_stu_list.xml" value="0.10925925925925926" />
         <entry key="..\:/AndroidStudioProjects/github_app/MyApplication1/app/src/main/res/layout/fragment_stu_personal.xml" value="0.10925925925925926" />
@@ -46,13 +43,13 @@
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/drawable/translucent.xml" value="0.26614583333333336" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/activity_login.xml" value="0.2128623188405797" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
-        <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/class_item.xml" value="0.2128623188405797" />
+        <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/class_item.xml" value="0.6" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_login_tab.xml" value="0.24818840579710144" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_signup_tab.xml" value="0.24818840579710144" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_stu_course.xml" value="0.24818840579710144" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_stu_home.xml" value="0.24818840579710144" />
-        <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_stu_list.xml" value="0.12335359675785208" />
+        <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_stu_list.xml" value="0.264" />
         <entry key="..\:/c盘桌面/大三上/swpro/SoftwareEngineering/MyApplication1/app/src/main/res/layout/fragment_stu_personal.xml" value="0.2128623188405797" />
       </map>
     </option>
