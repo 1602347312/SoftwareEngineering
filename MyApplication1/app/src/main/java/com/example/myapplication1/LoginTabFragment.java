@@ -56,7 +56,7 @@ public class LoginTabFragment extends Fragment {
                     public void run() {
                         try {
                             FormBody.Builder params = new FormBody.Builder();
-                            params.add("name", _name);
+                            params.add("username", _name);
                             params.add("passwd", _password);
 
 
@@ -77,7 +77,7 @@ public class LoginTabFragment extends Fragment {
 
                                 SharedPreferences spf = getActivity().getSharedPreferences("spf",Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor=spf.edit();
-                                editor.putString("name",_name);
+                                editor.putString("username",_name);
                                 editor.putString("password",_password);
                                 editor.apply();
                                 getActivity().runOnUiThread( new  Runnable() {
@@ -91,12 +91,12 @@ public class LoginTabFragment extends Fragment {
                                 });
                                 if(object.equals("1")){//
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                                    intent.putExtra("name",_name);
+                                    intent.putExtra("username",_name);
                                     startActivity(intent);
                                 } //教师和学生的判断
                                 else {
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                                    intent.putExtra("name",_name);
+                                    intent.putExtra("username",_name);
                                     startActivity(intent);
                                 }
 
@@ -122,7 +122,7 @@ public class LoginTabFragment extends Fragment {
 //                                    toastCenter.setGravity(Gravity.CENTER, 0, 0);
 //                                    toastCenter.show();
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                                    intent.putExtra("name",_name);
+                                    intent.putExtra("username",_name);
                                     startActivity(intent);
                                 }
                             });
