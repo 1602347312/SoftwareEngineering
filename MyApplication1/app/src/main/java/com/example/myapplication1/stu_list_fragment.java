@@ -30,7 +30,7 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_list, container, false);
         listView = root.findViewById(R.id.lv2);
         btn = root.findViewById(R.id.btn_back);
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.class_item, new String[]{"name", "divider", "num"}, new int[]{R.id.tv1, R.id.tv2, R.id.tv3});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.tv1, R.id.tv2, R.id.tv3});
         listView.setAdapter(simpleAdapter);
         listView.setOnItemClickListener(this);
 
