@@ -27,7 +27,7 @@ public class personal_stu_fragment extends Fragment {
         realname=root.findViewById(R.id.realname);
         btn_exit=root.findViewById(R.id.btn_exit);
         btn_update_icon=root.findViewById(R.id.btn_update_icon);
-//        number.setText(intent.getStringExtra());
+        getActivity().getIntent().getStringExtra("username");
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

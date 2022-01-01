@@ -110,9 +110,10 @@ public class sign_in_fragment extends Fragment {
 //                                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
 //                                    toastCenter.setGravity(Gravity.CENTER, 0, 0);
 //                                    toastCenter.show();
-                                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                                    intent.putExtra("signcode", _code);
-                                    startActivity(intent);
+//                                    Intent intent = new Intent(getActivity(), sign_in_fragment.class);
+//                                    intent.putExtra("signcode", _code);
+//                                    startActivity(intent);
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
                                 }
                             });
                         }
