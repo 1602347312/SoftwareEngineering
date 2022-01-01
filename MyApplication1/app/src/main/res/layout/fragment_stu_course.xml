@@ -6,10 +6,218 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/lv"
+
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@drawable/table_v_divider"
+        android:orientation="vertical"
+        android:showDividers="middle|beginning|end"
+        >
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end"
+            >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="星期一"
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="星期二"
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="星期三"
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="星期四"
+                />
 
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="星期五" />
+        </TableRow>
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+            <TextView
+                android:id="@+id/cls_11"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期一"
+                />
+            <TextView
+                android:id="@+id/cls_21"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期二"
+                />
+            <TextView
+                android:id="@+id/cls_31"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期三"
+                />
+            <TextView
+                android:id="@+id/cls_41"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期四"
+                />
 
+            <TextView
+                android:id="@+id/cls_51"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:text="星期五" />
+        </TableRow>
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+            <TextView
+                android:id="@+id/cls_12"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期一"
+                />
+            <TextView
+                android:id="@+id/cls_22"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期二"
+                />
+            <TextView
+                android:id="@+id/cls_32"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期三"
+                />
+            <TextView
+                android:id="@+id/cls_42"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期四"
+                />
+
+            <TextView
+                android:id="@+id/cls_52"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:text="星期五" />
+
+        </TableRow>
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="    "
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="    "
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="    "
+                />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:text="    "
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="    "
+                />
+        </TableRow>
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+            <TextView
+                android:id="@+id/cls_13"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期一"
+                />
+            <TextView
+                android:id="@+id/cls_23"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期二"
+                />
+            <TextView
+                android:id="@+id/cls_33"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期三"
+                />
+            <TextView
+                android:id="@+id/cls_43"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期四"
+                />
+
+            <TextView
+                android:id="@+id/cls_53"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:text="星期五" />
+
+        </TableRow>
+        <TableRow
+            android:divider="@drawable/table_h_divider"
+            android:orientation="horizontal"
+            android:showDividers="middle|beginning|end">
+            <TextView
+                android:id="@+id/cls_14"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="马克思主义原理xxxxxxxxxxxxxx"
+                />
+            <TextView
+                android:id="@+id/cls_24"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期二"
+                />
+            <TextView
+                android:id="@+id/cls_34"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期三"
+                />
+            <TextView
+                android:id="@+id/cls_44"
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:text="星期四"
+                />
+
+            <TextView
+                android:id="@+id/cls_54"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:text="星期五" />
+
+        </TableRow>
+
+    </TableLayout>
 </LinearLayout>

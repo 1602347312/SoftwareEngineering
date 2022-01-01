@@ -14,6 +14,7 @@ public class course_stu_fragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_course, container, false);
+
         return root;
     }
 

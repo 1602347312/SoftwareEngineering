@@ -29,18 +29,19 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_home, container, false);
-        listView=root.findViewById(R.id.lv1);
+        listView=(ListView) root.findViewById(R.id.lv1);
         simpleAdapter = new SimpleAdapter(getActivity(),getData(),R.layout.class_item,new String[]{"num","divider","name"},new int[]{R.id.tv1,R.id.tv2,R.id.tv3});
         listView.setAdapter(simpleAdapter);
         listView.setOnItemClickListener(this);
+
         return root;
     }
     private List<Map<String,Object>> getData() {
-        String [] num={"stu1","stu2","stu3","stu4","stu5","stu6","stu7","stu8"};
-        String [] name={"stu11","stu22","stu33","stu44","stu55","stu66","stu77","stu8"};
-        String [] test={"stu111","stu222","stu332","stu443","stu554","stu665","stu776","stu8"};
+        String [] num={"stu1","stu2","stu3","stu4","stu5","stu6","stu7","stu8","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9"};
+        String [] name={"stu11","stu22","stu33","stu44","stu55","stu66","stu77","stu8","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9"};
+        String [] test={"stu111","stu222","stu332","stu443","stu554","stu665","stu776","stu8","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9","stu9"};
         List<Map<String,Object>> list= new ArrayList<>();
-        for(int i=0;i<8;i++){
+        for(int i=0;i<20;i++){
             Map  map = new HashMap();
             map.put("num",num[i]);
             map.put("divider",test[i]);
