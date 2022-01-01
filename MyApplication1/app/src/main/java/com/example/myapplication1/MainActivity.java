@@ -35,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
                         fragment=new personal_stu_fragment();
                         break;
                     case R.id.course:
-                        fragment=new course_stu_fragment();
-                        break;
+                        //写好的fragment，用这个来看
+//                        fragment=new course_stu_fragment();
+//                        break;
+                    fragment=new sign_in_fragment();
+                    break;
+
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
                 }
