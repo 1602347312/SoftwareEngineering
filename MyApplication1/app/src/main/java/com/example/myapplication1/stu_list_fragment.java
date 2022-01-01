@@ -28,16 +28,13 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_list, container, false);
-        Log.d("msg","1");
         listView = root.findViewById(R.id.lv2);
         btn = root.findViewById(R.id.btn_back);
-        Log.d("msg","2");
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.tv1, R.id.tv2, R.id.tv3});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.txt1, R.id.txt2, R.id.txt3});
         listView.setAdapter(simpleAdapter);
 
         listView.setOnItemClickListener(this);
-        Log.d("msg","3");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +59,6 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
                 }).start();
             }
         });
-        Log.d("msg","4");
 
         return root;
     }
@@ -88,7 +84,6 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Log.d("msg","6");
 
         super.onActivityCreated(savedInstanceState);
     }
