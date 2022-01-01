@@ -130,10 +130,7 @@ public class sign_in_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            Intent intent = new Intent(getActivity(), sign_in_fragment.class);
-
-                            startActivity(intent);
-
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
 
                         }
                         catch (Exception e) {
@@ -141,10 +138,7 @@ public class sign_in_fragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-
-                                    Intent intent = new Intent(getActivity(), sign_in_fragment.class);
-
-                                    startActivity(intent);
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
                                 }
                             });
                         }

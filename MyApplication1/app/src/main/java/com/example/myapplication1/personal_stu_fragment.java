@@ -2,6 +2,7 @@ package com.example.myapplication1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,14 @@ public class personal_stu_fragment extends Fragment {
         realname=root.findViewById(R.id.realname);
         btn_exit=root.findViewById(R.id.btn_exit);
         btn_update_icon=root.findViewById(R.id.btn_update_icon);
-        getActivity().getIntent().getStringExtra("username");
+        Bundle bundle =this.getArguments();//得到从Activity传来的数据
+        String mess = null;
+        if(bundle!=null){
+            mess = bundle.getString("username");
+
+        }
+        else mess="no";
+        Log.d("msg",mess);
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

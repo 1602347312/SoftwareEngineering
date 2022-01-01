@@ -3,6 +3,8 @@ package com.example.myapplication1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNav);
         username=getIntent().getStringExtra("username");
         Log.d("msg",username);
+
         //创建默认fragment
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new home_stu_fragment()).commit();
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
                 }
+                Bundle bundle = new Bundle();
+                bundle.putString("username",username);
+                fragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
                 return true;
             }
