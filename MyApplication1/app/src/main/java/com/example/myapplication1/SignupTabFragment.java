@@ -61,12 +61,14 @@ public class SignupTabFragment extends Fragment {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //捕获按键对应的文本
+                                                   //注册接口连接成功 目前未知bug导致    输入学生 数据库存的是老师
                 String _username = username.getText().toString();
                 String _password = password.getText().toString();
                 String _realname = realname.getText().toString();
                 String _gender = gender.getText().toString();
-                int _number = (new Integer(username.getText().toString())).intValue();
+                String y = number.getText().toString();
+                Integer x=new Integer(y);
+                int _number = x.intValue();
                 boolean _type;
                 if(type.getText().toString()=="学生"){
                     _type=true;
@@ -79,7 +81,6 @@ public class SignupTabFragment extends Fragment {
                     public void run() {
                         try {
                             String json="{\n" +
-                                    "  \"avatar\": \"\",\n" +
                                     "  \"gender\": \""+_gender+"\",\n" +
                                     "  \"password\": \""+_password+"\",\n" +
                                     "  \"realId\": "+_number+",\n" +
@@ -100,7 +101,7 @@ public class SignupTabFragment extends Fragment {
 
                             String code=jsonObject.getString("code");
 
-                            if(code.equals("200")){
+                            if(code.equals("0")){
                                 getActivity().runOnUiThread( new  Runnable() {
                                     @Override
                                     public  void  run() {

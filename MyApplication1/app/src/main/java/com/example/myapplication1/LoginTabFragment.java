@@ -54,7 +54,7 @@ public class LoginTabFragment extends Fragment {
                 String _password=password.getText().toString();
                 new Thread(new Runnable() {
                     @Override
-                    public void run() {                      //未知错误，405  调用不了接口
+                    public void run() {                      //android studio版本问题    已解决
                         try {
                             FormBody.Builder params = new FormBody.Builder();
                             params.add("password", _password);
@@ -119,12 +119,9 @@ public class LoginTabFragment extends Fragment {
                             getActivity().runOnUiThread( new  Runnable() {
                                 @Override
                                 public  void  run() {
-//                                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
-//                                    toastCenter.setGravity(Gravity.CENTER, 0, 0);
-//                                    toastCenter.show();
-                                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                                    intent.putExtra("username",_name);
-                                    startActivity(intent);
+                                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
+                                    toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                    toastCenter.show();
                                 }
                             });
                         }
