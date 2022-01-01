@@ -28,11 +28,16 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_list, container, false);
+        Log.d("msg","1");
         listView = root.findViewById(R.id.lv2);
         btn = root.findViewById(R.id.btn_back);
+        Log.d("msg","2");
+
         simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.tv1, R.id.tv2, R.id.tv3});
         listView.setAdapter(simpleAdapter);
+
         listView.setOnItemClickListener(this);
+        Log.d("msg","3");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +62,14 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
                 }).start();
             }
         });
+        Log.d("msg","4");
+
         return root;
     }
 
     private List<Map<String, Object>> getData() {
+        Log.d("msg","5");
+
         String[] num = {"1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111","1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111"};
         String[] name = {"张三", "张三四", "张三", "李三四", "张三", "张三四", "张三", "李三四","张三", "张三四", "张三", "李三四", "张三", "张三四", "张三", "李三四"};
         String[] divider = {"学号:", "学号:", "学号:", "学号:", "学号:", "学号:", "学号:", "学号:","学号:", "学号:", "学号:", "学号:", "学号:", "学号:", "学号:", "学号:"};
@@ -72,11 +81,15 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
             map.put("name", name[i]);
             list.add(map);
         }
+        listView.setAdapter(simpleAdapter);
+
         return list;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        Log.d("msg","6");
+
         super.onActivityCreated(savedInstanceState);
     }
 

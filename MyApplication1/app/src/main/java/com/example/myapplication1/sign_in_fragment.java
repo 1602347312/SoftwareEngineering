@@ -144,9 +144,7 @@ public class sign_in_fragment extends Fragment {
                         }
 
                     }
-                }).
-
-                        start();
+                }).start();
             }
         });
 
