@@ -115,7 +115,7 @@ public class class_detail_fragment extends Fragment{
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_list_fragment()).commit();
 
                         }
                         catch (Exception e) {
@@ -123,7 +123,7 @@ public class class_detail_fragment extends Fragment{
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_list_fragment()).commit();
                                 }
                             });
                         }

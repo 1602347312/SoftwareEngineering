@@ -19,38 +19,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class stu_list_fragment extends Fragment implements AdapterView.OnItemClickListener {
-    ListView listView;
-    Button btn;
+public class sign_list_fragment extends Fragment implements AdapterView.OnItemClickListener{
+    Button sigh_list_btn_back;
     SimpleAdapter simpleAdapter;
-
+    ListView lv_sign_list;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_list, container, false);
-        listView = root.findViewById(R.id.lv2);
-        btn = root.findViewById(R.id.btn_back);
-
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.txt1, R.id.txt2, R.id.txt3});
-        listView.setAdapter(simpleAdapter);
-
-        listView.setOnItemClickListener(this);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_sign_list, container, false);
+        sigh_list_btn_back=root.findViewById(R.id.sigh_list_btn_back);
+        lv_sign_list=root.findViewById(R.id.lv_sign_list);
+        sigh_list_btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_stu_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new class_detail_fragment()).commit();
 
-                        } catch (Exception e) {
+                        }
+                        catch (Exception e) {
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_stu_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new class_detail_fragment()).commit();
                                 }
                             });
                         }
@@ -60,9 +54,13 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
             }
         });
 
+
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.namelist_item, new String[]{"name", "divider", "num"}, new int[]{R.id.txt1, R.id.txt2, R.id.txt3});
+        lv_sign_list.setAdapter(simpleAdapter);
+
+        lv_sign_list.setOnItemClickListener(this);
         return root;
     }
-
     private List<Map<String, Object>> getData() {
 
         String[] num = {"1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111","1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111", "1951111"};
@@ -76,7 +74,7 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
             map.put("name", name[i]);
             list.add(map);
         }
-        listView.setAdapter(simpleAdapter);
+        lv_sign_list.setAdapter(simpleAdapter);
 
         return list;
     }
@@ -90,7 +88,7 @@ public class stu_list_fragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String text = listView.getAdapter().getItem(position).toString();
+        String text = lv_sign_list.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
     }
 }
