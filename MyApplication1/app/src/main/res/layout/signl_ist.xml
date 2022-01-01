@@ -54,16 +54,16 @@
         app:layout_constraintStart_toEndOf="@+id/txt6"
         app:layout_constraintTop_toBottomOf="@+id/txt5" />
 
-    <Button
-        android:id="@+id/btn_sign"
-        android:layout_width="115dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:text="去签到"
-        android:textSize="18sp"
+<!--    <Button-->
+<!--        android:id="@+id/btn_sign"-->
+<!--        android:layout_width="115dp"-->
+<!--        android:layout_height="92dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="4dp"-->
+<!--        android:text="去签到"-->
+<!--        android:textSize="18sp"-->
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

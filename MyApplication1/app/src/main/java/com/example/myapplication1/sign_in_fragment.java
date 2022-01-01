@@ -113,7 +113,7 @@ public class sign_in_fragment extends Fragment {
 //                                    Intent intent = new Intent(getActivity(), sign_in_fragment.class);
 //                                    intent.putExtra("signcode", _code);
 //                                    startActivity(intent);
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_list_fragment()).commit();
                                 }
                             });
                         }
@@ -130,7 +130,7 @@ public class sign_in_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_list_fragment()).commit();
 
                         }
                         catch (Exception e) {
@@ -138,7 +138,7 @@ public class sign_in_fragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new course_stu_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_list_fragment()).commit();
                                 }
                             });
                         }

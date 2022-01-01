@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         //写好的fragment，用这个来看
 //                        fragment=new course_stu_fragment();
 //                        break;
-                        fragment=new sign_list_fragment();
+                        fragment=new class_detail_fragment();
                         break;
 
                     default:

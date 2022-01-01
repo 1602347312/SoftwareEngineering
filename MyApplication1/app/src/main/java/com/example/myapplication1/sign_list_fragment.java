@@ -102,47 +102,5 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
         String text = lv_sign_list.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();
-
     }
-    private class MyListener implements View.OnClickListener {
-        int mPosition;
-        public MyListener(int inPosition){
-            mPosition= inPosition;
-        }
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            Log.e("msg", "ojbk" );
-        }
-
-    }
-
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        Button viewBtn;
-        MyListener myListener=null;
-        if (convertView == null) {
-
-            //可以理解为从vlist获取view  之后把view返回给ListView
-            myListener=new MyListener(position);
-
-            convertView = mInflater.inflate(R.layout.vlist, null);
-
-            viewBtn = (Button)convertView.findViewById(R.id.view_btn);
-            convertView.setTag(holder);
-        }else {
-            holder = (ViewHolder)convertView.getTag();
-        }
-
-        holder.title.setText((String)mData.get(position).get("title"));
-        holder.info.setText((String)mData.get(position).get("info"));
-        holder.viewBtn.setTag(position);
-        //给Button添加单击事件  添加Button之后ListView将失去焦点  需要的直接把Button的焦点去掉
-        holder.viewBtn.setOnClickListener( myListener);
-
-        //holder.viewBtn.setOnClickListener(MyListener(position));
-
-        return convertView;
-    }
-}
 }
