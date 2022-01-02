@@ -26,7 +26,7 @@ import okhttp3.Response;
 
 public class modify_userinfo_fragment extends Fragment {
     EditText m_username, m_password, m_number,m_realname,m_type,m_gender;
-    Button btn_m_modify;
+    Button btn_m_modify,btn_m_return;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class modify_userinfo_fragment extends Fragment {
         m_password = root.findViewById(R.id.m_password);
         m_number = root.findViewById(R.id.m_stu_tea_num);
         m_realname = root.findViewById(R.id.m_realname);
-        m_type = root.findViewById(R.id.m_identity);
         m_gender=root.findViewById(R.id.m_gender);
         btn_m_modify=root.findViewById(R.id.m_modify);
+        btn_m_return=root.findViewById(R.id.m_return);
         btn_m_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +107,13 @@ public class modify_userinfo_fragment extends Fragment {
                     }
                 }).start();
 
+            }
+        });
+        btn_m_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new personal_stu_fragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
             }
         });
         return root;
