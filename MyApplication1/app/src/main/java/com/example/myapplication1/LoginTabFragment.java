@@ -72,7 +72,7 @@ public class LoginTabFragment extends Fragment {
                             String code = jsonObject.getString("code");
 //                            String code=jsonObject.getString("code");
                             JSONObject data= new JSONObject(jsonObject.getString("data"));
-
+                            String token=data.getString("token").toString();
 
                             if(code.equals("0")){
 
@@ -93,11 +93,13 @@ public class LoginTabFragment extends Fragment {
                                 if(data.getString("type").equals(true)){//true学生 false老师
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("username",_name);
+                                    intent.putExtra("token",token);
                                     startActivity(intent);
                                 }
                                 else {
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("username",_name);
+                                    intent.putExtra("token",token);
                                     startActivity(intent);
                                 }
 
