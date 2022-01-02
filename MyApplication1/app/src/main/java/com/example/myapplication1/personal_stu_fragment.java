@@ -41,41 +41,41 @@ public class personal_stu_fragment extends Fragment {
     Button btn_change_info;
     Button btn_exit;
     Button btn_update_icon;
+
     @Nullable
     @Override
     @SuppressLint("NewApi")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_personal, container, false);
-        btn_change_info=root.findViewById(R.id.btn_change_info);
-        number=root.findViewById(R.id.number);
-        realname=root.findViewById(R.id.realname);
-        picture=root.findViewById(R.id.picture);
-        btn_exit=root.findViewById(R.id.btn_exit);
-        btn_update_icon=root.findViewById(R.id.btn_update_icon);
+        btn_change_info = root.findViewById(R.id.btn_change_info);
+        number = root.findViewById(R.id.number);
+        realname = root.findViewById(R.id.realname);
+        picture = root.findViewById(R.id.picture);
+        btn_exit = root.findViewById(R.id.btn_exit);
+        btn_update_icon = root.findViewById(R.id.btn_update_icon);
         String username = getActivity().getIntent().getStringExtra("username");
         String token = getActivity().getIntent().getStringExtra("token");
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url("http://121.37.172.109:9000/back_end/user/getUserByToken")
-                    .post(RequestBody.create(MediaType.parse("application/json"),token))
+                    .post(RequestBody.create(MediaType.parse("application/json"), token))
                     .build();
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
             JSONObject jsonObject = new JSONObject(responseData);
 //            Log.d("msg", jsonObject.getString("msg"));
 //            Log.d("code", jsonObject.getString("code"));
-            String code=jsonObject.getString("code");
-            JSONObject data= new JSONObject(jsonObject.getString("data"));
-            if(code.equals("0")){
+            String code = jsonObject.getString("code");
+            JSONObject data = new JSONObject(jsonObject.getString("data"));
+            if (code.equals("0")) {
                 number.setText(data.getString("realId"));
                 realname.setText(data.getString("realName"));
 //                picture.setImageURI(Uri.parse(data.getString("avatar")));
                 picture.setImageBitmap(getBitmap(data.getString("avatar")));
-            }
-            else {
+            } else {
                 number.setText("连接成功");
                 realname.setText("获取失败");
             }
@@ -100,6 +100,15 @@ public class personal_stu_fragment extends Fragment {
                 startActivity(intent);
             }
         });
+        btn_change_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new modify_userinfo_fragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
+            }
+        });
+
+
         return root;
     }
     public static Bitmap getBitmap(String path) throws IOException {  //显示图片函数
@@ -108,7 +117,7 @@ public class personal_stu_fragment extends Fragment {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setConnectTimeout(5000);
         conn.setRequestMethod("GET");
-        if (conn.getResponseCode() == 200){
+        if (conn.getResponseCode() == 200) {
             InputStream inputStream = conn.getInputStream();
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             return bitmap;
