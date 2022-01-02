@@ -107,7 +107,16 @@ public class personal_stu_fragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
             }
         });
-
+        btn_update_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
+                Log.d("mas","我是person");
+                getActivity().startActivityForResult(intent, 10);
+            }
+        });
 
         return root;
     }
@@ -124,4 +133,5 @@ public class personal_stu_fragment extends Fragment {
         }
         return null;
     }
+
 }

@@ -1,11 +1,16 @@
 package com.example.myapplication1;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -59,5 +64,27 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    //文件选择器部分看不懂代码
+    @Override
+    @Nullable
+    protected void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("mas","我是mainac");
+        if (data == null) {
+            // 用户未选择任何文件，直接返回
+            return;
+        }
+        Uri uri = data.getData(); // 获取用户选择文件的URI
+        // 通过ContentProvider查询文件路径
+        ContentResolver resolver = this.getContentResolver();
+        Cursor cursor = resolver.query(uri, null, null, null, null);
+        if (cursor == null) {
+            // 未查询到，说明为普通文件，可直接通过URI获取文件路径
+            String path = uri.getPath();
+            Log.d("mas","我是mainac");
+            return;
+        }
+        cursor.close();
     }
 }
