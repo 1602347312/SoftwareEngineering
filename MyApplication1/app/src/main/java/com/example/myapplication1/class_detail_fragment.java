@@ -28,7 +28,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class class_detail_fragment extends Fragment {
-    String class_code;
+
+    Data globaldata;
     Button class_detail_btn_back, class_detail_btn_stu_list, class_detail_homework, class_detail_sign, class_detail_source;
     TextView class_detail_txt_name, class_detail_txt_course, class_detail_txt_slot, class_detail_txt_code;
     ImageView class_detail_icon;
@@ -50,10 +51,11 @@ public class class_detail_fragment extends Fragment {
         class_detail_txt_course = root.findViewById(R.id.class_detail_txt_course);
         class_detail_txt_slot = root.findViewById(R.id.class_detail_txt_slot);
         class_detail_txt_code = root.findViewById(R.id.class_detail_txt_code);
-        getClassInfo();//为上面4个textview赋值
-        Data data= (Data) this.getActivity().getApplication();
-        Log.d("quanju",data.getClass_code());
-        Log.d("quanju",data.getUsername());
+        getClassDetail();//为上面4个textview赋值
+        globaldata= (Data) this.getActivity().getApplication();
+        globaldata.setClass_code("2");
+        Log.d("quanju",globaldata.getClass_code());
+        Log.d("quanju",globaldata.getUsername());
 
 
         class_detail_btn_back.setOnClickListener(new View.OnClickListener() {
@@ -179,15 +181,14 @@ public class class_detail_fragment extends Fragment {
         return root;
     }
 
-    public void getClassInfo() {
-        class_code="2";
+    public void getClassDetail() {
         new Thread(new Runnable() {
             @Override
             public void run() {                      //android studio版本问题    已解决
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://121.37.172.109:9000/back_end/class/getClassDetail?class_code=" + class_code)
+                            .url("http://121.37.172.109:9000/back_end/class/getClassDetail?class_code=" + globaldata.getClass_code())
                             .get()
                             .build();
                     Response response = client.newCall(request).execute();
@@ -209,15 +210,14 @@ public class class_detail_fragment extends Fragment {
                             @Override
                             public void run() {
                                 try {
-                                    Log.d("data", "abc" + data.getString("classCode"));
-                                    //        取数据后赋值
+
 
                                     class_detail_txt_code.setText(data.getString("classCode"));
                                     class_detail_txt_name.setText(data.getString("classTeacherId"));
 
                                     class_detail_txt_course .setText(data.getString("className"));
                                     class_detail_txt_slot.setText(data.getString("classSlot"));
-
+                                    globaldata.setClass_name(data.getString("className"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
