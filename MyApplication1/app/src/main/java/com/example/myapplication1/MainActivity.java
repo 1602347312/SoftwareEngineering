@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNav);
         username=getIntent().getStringExtra("username");
         Log.d("msg",username);
+        Data data =(Data)this.getApplication();
 
         //创建默认fragment
         if(savedInstanceState==null){

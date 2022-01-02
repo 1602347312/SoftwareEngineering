@@ -51,6 +51,10 @@ public class class_detail_fragment extends Fragment {
         class_detail_txt_slot = root.findViewById(R.id.class_detail_txt_slot);
         class_detail_txt_code = root.findViewById(R.id.class_detail_txt_code);
         getClassInfo();//为上面4个textview赋值
+        Data data= (Data) this.getActivity().getApplication();
+        Log.d("quanju",data.getClass_code());
+        Log.d("quanju",data.getUsername());
+
 
         class_detail_btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -41,9 +41,12 @@ public class LoginTabFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root=(ViewGroup) inflater.inflate(R.layout.fragment_login_tab,container,false);
 
+        Data globaldata= (Data) this.getActivity().getApplication();
+
 
         username=root.findViewById(R.id.username);
         password=root.findViewById(R.id.password);
+
         btn_login=root.findViewById(R.id.btn_login);
         //登录按钮的响应
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -75,11 +78,12 @@ public class LoginTabFragment extends Fragment {
                             String token=data.getString("token").toString();
 
                             if(code.equals("0")){
-
+                                globaldata.setUsername(_name);
                                 SharedPreferences spf = getActivity().getSharedPreferences("spf",Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor=spf.edit();
                                 editor.putString("username",_name);
                                 editor.putString("password",_password);
+
                                 editor.apply();
                                 getActivity().runOnUiThread( new  Runnable() {
                                     @Override
@@ -131,6 +135,7 @@ public class LoginTabFragment extends Fragment {
                     }
                 }).start();
             }
+
         });
         return root;
 
