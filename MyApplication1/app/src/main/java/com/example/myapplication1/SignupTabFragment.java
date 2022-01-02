@@ -70,7 +70,7 @@ public class SignupTabFragment extends Fragment {
                 Integer x=new Integer(y);
                 int _number = x.intValue();
                 boolean _type;
-                if(type.getText().toString()=="学生"){
+                if(type.getText().toString().equals("学生")){
                     _type=true;
                 }
                 else{
