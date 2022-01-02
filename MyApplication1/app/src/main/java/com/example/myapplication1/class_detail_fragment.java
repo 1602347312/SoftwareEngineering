@@ -53,6 +53,7 @@ public class class_detail_fragment extends Fragment {
         class_detail_txt_code = root.findViewById(R.id.class_detail_txt_code);
         getClassDetail();//为上面4个textview赋值
         globaldata= (Data) this.getActivity().getApplication();
+        //应该在班级列表时写入
         globaldata.setClass_code("2");
         Log.d("quanju",globaldata.getClass_code());
         Log.d("quanju",globaldata.getUsername());
