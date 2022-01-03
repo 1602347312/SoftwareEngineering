@@ -211,8 +211,10 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
         String text = lv_sign_list.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
         Log.e("msg", signInRecordState.get(position));
-        if(!signInRecordState.get(position).equals("已截止"))
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();
+        if(!signInRecordState.get(position).equals("已截止")){
+            //取值应该在sign_list里
+            globaldata.setSign_in_record_id(signInRecordId.get(position));
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();}
         else
         {
             Toast toastCenter = null;

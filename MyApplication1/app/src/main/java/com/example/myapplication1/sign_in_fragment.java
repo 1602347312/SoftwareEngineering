@@ -52,9 +52,8 @@ public class sign_in_fragment extends Fragment {
                 globaldata.setSign_in_record_code(cd.getText().toString());
                 //赋值应该在登录里
                 globaldata.setRealId("22");
-                //取值应该在sign_list里
-                globaldata.setSign_in_record_id("9");
-                Log.d("msg", globaldata.getSign_in_record_code());
+
+                Log.d("msg", globaldata.getSign_in_record_id());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {                      //android studio版本问题    已解决
