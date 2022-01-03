@@ -3,6 +3,10 @@ package com.example.myapplication1;
 import static java.util.logging.Logger.getLogger;
 import static java.util.logging.Logger.global;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -175,8 +179,10 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         JSONObject jsonObject=new JSONObject(response.body().string());
                         Log.d("mas",jsonObject.getString("code"));
-                        Log.d("mas",jsonObject.getString("data"));
+                        Log.d("massssssssssss",jsonObject.getString("data"));
                         update_icon(jsonObject.getString("data"));
+                        Log.d("masdddddddddddd",jsonObject.getString("data"));
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -192,7 +198,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?avatar="+URL+"&old_password="+globaldata.getpassword();
+                    String encoderUrl = URLEncoder.encode(URL, "UTF-8");
+                    String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?avatar="+encoderUrl+"&old_password="+globaldata.getpassword()+"&user_id="+globaldata.getUsername();
+
+                    Log.d("mas",url);
+
                     OkHttpClient client = new OkHttpClient().newBuilder()
                             .build();
                     Request request = new Request.Builder()
