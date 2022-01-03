@@ -83,7 +83,8 @@ public class LoginTabFragment extends Fragment {
                                 SharedPreferences.Editor editor=spf.edit();
                                 editor.putString("username",_name);
                                 editor.putString("password",_password);
-
+                                globaldata.setpassword(_password);
+                                globaldata.setUsername(_name);
                                 editor.apply();
                                 getActivity().runOnUiThread( new  Runnable() {
                                     @Override

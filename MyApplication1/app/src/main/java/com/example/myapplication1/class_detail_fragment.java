@@ -54,7 +54,7 @@ public class class_detail_fragment extends Fragment {
         getClassDetail();//为上面4个textview赋值
         globaldata= (Data) this.getActivity().getApplication();
         //应该在班级列表时写入
-        globaldata.setClass_code("2");
+        globaldata.setClass_code("DYr22t");
         Log.d("quanju",globaldata.getClass_code());
         Log.d("quanju",globaldata.getUsername());
 
@@ -228,7 +228,7 @@ public class class_detail_fragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast toastCenter = Toast.makeText(getActivity(), "请求成功，登陆失败", Toast.LENGTH_LONG);
+                                Toast toastCenter = Toast.makeText(getActivity(), "请求sdsd成功，登陆失败", Toast.LENGTH_LONG);
                                 toastCenter.setGravity(Gravity.CENTER, 0, 0);
                                 toastCenter.show();
 
@@ -241,7 +241,7 @@ public class class_detail_fragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
+                            Toast toastCenter = Toast.makeText(getActivity(), "请求wwww失败，登陆失败", Toast.LENGTH_LONG);
                             toastCenter.setGravity(Gravity.CENTER, 0, 0);
                             toastCenter.show();
                         }

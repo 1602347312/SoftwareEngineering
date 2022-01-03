@@ -115,6 +115,8 @@ public class personal_stu_fragment extends Fragment {
                 intent.setType("*/*");
                 Log.d("mas","我是person");
                 getActivity().startActivityForResult(intent, 10);
+                Log.d("mas","我是回来了");
+
             }
         });
 

@@ -8,7 +8,15 @@ public class Data extends Application{
     private String sign_in_record_code;
     private String sign_in_record_id;
     private String realId;
+    private String password;
 
+    public String getpassword() {
+        return password;
+    }
+
+    public void setpassword(String password) {
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;
@@ -66,6 +74,7 @@ public class Data extends Application{
         sign_in_record_id="-1";
         sign_in_record_code="-1";
         realId="-1";
+        password="-1";
         super.onCreate();
     }
 }

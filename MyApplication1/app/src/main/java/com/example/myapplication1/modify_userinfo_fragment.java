@@ -25,13 +25,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class modify_userinfo_fragment extends Fragment {
-    EditText m_username, m_password, m_number,m_realname,m_type,m_gender;
+    EditText m_username, m_password, m_number,m_realname,m_gender,m_old_password;
     Button btn_m_modify,btn_m_return;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_modifyuserinfo, container, false);
         m_username = root.findViewById(R.id.m_username);
+        m_old_password = root.findViewById(R.id.m_old_password);
         m_password = root.findViewById(R.id.m_password);
         m_number = root.findViewById(R.id.m_stu_tea_num);
         m_realname = root.findViewById(R.id.m_realname);
@@ -41,6 +42,7 @@ public class modify_userinfo_fragment extends Fragment {
         btn_m_modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String _old_password = m_old_password.getText().toString();
                 String _username = m_username.getText().toString();
                 String _password = m_password.getText().toString();
                 String _realname = m_realname.getText().toString();
@@ -52,7 +54,7 @@ public class modify_userinfo_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?user_id="+_username+"&real_name="+_realname+"&real_id="+_number+"&password="+_password+"&gender="+_gender;
+                            String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?user_id="+_username+"&old_password="+_old_password+"&real_name="+_realname+"&real_id="+_number+"&password="+_password+"&gender="+_gender;
                             OkHttpClient client = new OkHttpClient().newBuilder()
                                     .build();
                             Request request = new Request.Builder()

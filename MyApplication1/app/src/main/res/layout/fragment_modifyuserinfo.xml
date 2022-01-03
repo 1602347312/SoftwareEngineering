@@ -47,6 +47,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209"
         app:layout_constraintWidth_percent=".8" />
+    <EditText
+        android:id="@+id/m_old_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="原密码"
+        android:inputType="phone"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:flow_firstHorizontalBias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/m_username"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent=".8" />
 
     <EditText
         android:id="@+id/m_stu_tea_num"
@@ -63,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/m_username"
+        app:layout_constraintTop_toBottomOf="@id/m_old_password"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8" />
 
