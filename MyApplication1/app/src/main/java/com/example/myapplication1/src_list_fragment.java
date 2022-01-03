@@ -172,7 +172,7 @@ public class src_list_fragment extends Fragment implements AdapterView.OnItemCli
 
 
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.signl_ist, new String[]{"materialTitle", "materialUploadTime", "materialUploader", "materialSize"}, new int[]{R.id.txt4, R.id.txt5, R.id.txt6,R.id.txt7});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.src_item, new String[]{"materialTitle", "materialUploadTime", "materialUploader", "materialSize"}, new int[]{R.id.src_t1, R.id.src_t2, R.id.src_t3,R.id.src_t4});
         src_lv.setAdapter(simpleAdapter);
 
         src_lv.setOnItemClickListener(this);

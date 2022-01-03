@@ -169,7 +169,7 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
 
 
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.signl_ist, new String[]{"assignmentTitle", "assignmentDeadline", "assignmentState", "assignmentTotalScore"}, new int[]{R.id.txt4, R.id.txt5, R.id.txt6,R.id.txt7});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.ass_item, new String[]{"assignmentTitle", "assignmentDeadline", "assignmentState", "assignmentTotalScore"}, new int[]{R.id.ass_t1, R.id.ass_t2, R.id.ass_t3,R.id.ass_t4});
         ass_lv1.setAdapter(simpleAdapter);
 
         ass_lv1.setOnItemClickListener(this);
