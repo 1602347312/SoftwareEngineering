@@ -46,6 +46,7 @@ public class personal_stu_fragment extends Fragment {
     @Override
     @SuppressLint("NewApi")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Data globaldata= (Data) this.getActivity().getApplication();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_personal, container, false);
@@ -73,6 +74,7 @@ public class personal_stu_fragment extends Fragment {
             if (code.equals("0")) {
                 number.setText(data.getString("realId"));
                 realname.setText(data.getString("realName"));
+                globaldata.setRealId(data.getString("realId"));
 //                picture.setImageURI(Uri.parse(data.getString("avatar")));
                 picture.setImageBitmap(getBitmap(data.getString("avatar")));
             } else {
