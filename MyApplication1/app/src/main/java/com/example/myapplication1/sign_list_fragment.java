@@ -170,11 +170,6 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
                 }
             });
         }
-
-
-
-
-
         simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.signl_ist, new String[]{"record", "date", "state1", "state2"}, new int[]{R.id.txt4, R.id.txt5, R.id.txt6});
         lv_sign_list.setAdapter(simpleAdapter);
 
@@ -188,7 +183,7 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < l; i++) {
             Map map = new HashMap();
-            map.put("record", signInRecordId.get(i));
+            map.put("record", signInRecordTitle.get(i));
             map.put("state1", signInRecordState.get(i));
             map.put("state2", state2[i]);
             map.put("date", signInRecordLaunchTime.get(i));
