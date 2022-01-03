@@ -11,9 +11,23 @@ public class Data extends Application{
     private String realId;
     private String password;
     private String token;
+    private int order;     //order为1 选ass      order为2 选src      order为3 传头像
+    private int ass_id;
+    public int getass_id() {
+        return ass_id;
+    }
 
+    public void setass_id(int ass_id) {
+        this.ass_id = ass_id;
+    }
 
+    public int getorder() {
+        return order;
+    }
 
+    public void setorder(int order) {
+        this.order = order;
+    }
     public String getUsername() {
         return username;
     }
@@ -87,8 +101,8 @@ public class Data extends Application{
         Log.d("data_realId",realId);
         Log.d("data_password",password);
         Log.d("data_token",token);
-
-
+        Log.d("data_order", String.valueOf(order));
+        Log.d("data_ass_id", String.valueOf(ass_id));
 
     }
 
@@ -102,6 +116,8 @@ public class Data extends Application{
         realId="-1";
         password="-1";
         token="-1";
+        order=-1;
+        ass_id=-1;
         super.onCreate();
     }
 }

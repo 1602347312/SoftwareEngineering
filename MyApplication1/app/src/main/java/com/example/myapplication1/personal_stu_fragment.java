@@ -41,12 +41,12 @@ public class personal_stu_fragment extends Fragment {
     Button btn_change_info;
     Button btn_exit;
     Button btn_update_icon;
-
+    Data globaldata;
     @Nullable
     @Override
     @SuppressLint("NewApi")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Data globaldata= (Data) this.getActivity().getApplication();
+        globaldata= (Data) this.getActivity().getApplication();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_personal, container, false);
@@ -112,6 +112,7 @@ public class personal_stu_fragment extends Fragment {
         btn_update_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                globaldata.setorder(3);
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");

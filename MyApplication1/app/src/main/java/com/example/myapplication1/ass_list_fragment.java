@@ -2,6 +2,7 @@ package com.example.myapplication1;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -206,7 +207,12 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
         String text = ass_lv1.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
         Log.e("msg", assignmentId.get(position));
-
+        globaldata.setass_id(Integer.parseInt(assignmentId.get(position)));
+        globaldata.setorder(1);
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        getActivity().startActivityForResult(intent, 10);
 
 
 

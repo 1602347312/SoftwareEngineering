@@ -1,9 +1,13 @@
 package com.example.myapplication1;
 
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,6 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -212,9 +221,82 @@ public class src_list_fragment extends Fragment implements AdapterView.OnItemCli
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String text = src_lv.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String url="http://121.37.172.109:9000/back_end/material/download?material_id="+materialId.get(position);
+                    Log.d("download:",url);
+                    OkHttpClient client = new OkHttpClient().newBuilder()
+                            .build();
+                    Request request = new Request.Builder()
+                            .url(url)
+                            .method("GET", null)
+                            .addHeader("Content-Type", "application/json")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(responseData);
+                    String code = jsonObject.getString("code");
+                    String file_url = jsonObject.getString("data");
+                    Log.d("file_url:",file_url);
+                    if(code.equals("0")){
+                        DownloadManager.Request download_request = new DownloadManager.Request(Uri.parse(file_url));
+                        download_request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "/storage/self/primary/Download/"+GetFileName(file_url));
+                        DownloadManager downloadManager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                        downloadManager.enqueue(download_request);
+                        //下载操作
+
+                        getActivity().runOnUiThread( new  Runnable() {
+                            @Override
+                            public  void  run() {
+                                Toast toastCenter = Toast.makeText(getActivity(), "下载文件成功", Toast.LENGTH_LONG);
+                                //确定Toast显示位置，并显示
+                                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                toastCenter.show();
+                            }
+                        });
+
+
+                    }
+                    else {
+                        getActivity().runOnUiThread( new  Runnable() {
+                            @Override
+                            public  void  run() {
+                                Toast toastCenter = Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG);
+                                //确定Toast显示位置，并显示
+                                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                toastCenter.show();
+                            }
+                        });
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    getActivity().runOnUiThread( new  Runnable() {
+                        @Override
+                        public  void  run() {
+                            Toast toastCenter = Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG);
+                            //确定Toast显示位置，并显示
+                            toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                            toastCenter.show();
+                        }
+                    });
+                }
+
+            }
+        }).start();
 
 
 
-
+    }
+    public String GetFileName(String URL){
+        int start = URL.lastIndexOf("/");
+        int end = URL.length();
+        if (start != -1 && end != -1) {
+            return URL.substring(start+1,end);
+        } else {
+            return null;
+        }
     }
 }
