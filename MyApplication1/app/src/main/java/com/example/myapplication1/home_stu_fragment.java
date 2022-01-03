@@ -60,23 +60,15 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
 
 
         try {
-
-
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=true")
                     .get()
                     .build();
             Response response = client.newCall(request).execute();
-
-
             String responseData = response.body().string();
             JSONObject jsonObject = new JSONObject(responseData);
-
-
             String code = jsonObject.getString("code");
-
-
             if (!jsonObject.getString("data").equals("null")) {
                 JSONArray data = new JSONArray(jsonObject.getString("data"));
 
