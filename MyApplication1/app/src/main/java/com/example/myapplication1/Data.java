@@ -1,5 +1,6 @@
 package com.example.myapplication1;
 import android.app.Application;
+import android.util.Log;
 
 public class Data extends Application{
     private String username;
@@ -9,14 +10,9 @@ public class Data extends Application{
     private String sign_in_record_id;
     private String realId;
     private String password;
+    private String token;
 
-    public String getpassword() {
-        return password;
-    }
 
-    public void setpassword(String password) {
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;
@@ -66,6 +62,36 @@ public class Data extends Application{
         this.realId = realId;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void show(){
+        Log.d("data_username",username);
+        Log.d("data_class_code",class_code);
+        Log.d("data_class_name",class_name);
+        Log.d("data_sign_in_record_id",sign_in_record_id);
+        Log.d("data_sign_in_recordcode",sign_in_record_code);
+        Log.d("data_realId",realId);
+        Log.d("data_password",password);
+        Log.d("data_token",token);
+
+
+
+    }
+
     @Override
     public void onCreate(){
         username = "-1";
@@ -75,6 +101,7 @@ public class Data extends Application{
         sign_in_record_code="-1";
         realId="-1";
         password="-1";
+        token="-1";
         super.onCreate();
     }
 }

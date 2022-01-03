@@ -90,12 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if (!globaldata.getClass_code().equals("-1"))
                         {
-                            Log.d("msg","12");
                             fragment = new course_stu_fragment();
                             break;
                         }
                         else {
-                            Log.d("msg","34");
                             fragment = new home_stu_fragment();
                             Toast toastCenter = null;
                             toastCenter = Toast.makeText(getApplicationContext(), "请选择班级", Toast.LENGTH_LONG);
@@ -210,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     String encoderUrl = URLEncoder.encode(URL, "UTF-8");
-                    String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?avatar="+encoderUrl+"&old_password="+globaldata.getpassword()+"&user_id="+globaldata.getUsername();
+                    String url="http://121.37.172.109:9000/back_end/user/modifyUserInfo?avatar="+encoderUrl+"&old_password="+globaldata.getPassword()+"&user_id="+globaldata.getUsername();
 
                     Log.d("mas",url);
 

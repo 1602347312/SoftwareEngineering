@@ -54,7 +54,7 @@ public class class_detail_fragment extends Fragment {
         getClassDetail();//为上面4个textview赋值
         globaldata= (Data) this.getActivity().getApplication();
         //应该在班级列表时写入
-//        globaldata.setClass_code("DYr22t");
+        //globaldata.setClass_code("DYr22t");
         Log.d("quanju",globaldata.getClass_code());
         Log.d("quanju",globaldata.getUsername());
 

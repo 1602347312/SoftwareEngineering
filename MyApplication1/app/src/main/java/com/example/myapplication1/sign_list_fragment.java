@@ -86,8 +86,7 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
             }
         });
         globaldata = (Data) this.getActivity().getApplication();
-        //班级码应该在班级登录时写入
-        globaldata.setClass_code("DYr22t");
+
 
 
         try {
