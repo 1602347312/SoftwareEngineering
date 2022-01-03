@@ -114,14 +114,14 @@ public class class_detail_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new stu_list_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ass_list_fragment()).commit();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new stu_list_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ass_list_fragment()).commit();
                                 }
                             });
                         }

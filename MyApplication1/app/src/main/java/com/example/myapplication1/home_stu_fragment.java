@@ -36,7 +36,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class home_stu_fragment extends Fragment implements AdapterView.OnItemClickListener{
+public class home_stu_fragment extends Fragment implements AdapterView.OnItemClickListener {
     ListView listView;
     SimpleAdapter simpleAdapter;
     Data globaldata;
@@ -45,89 +45,105 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
     List<String> className = new ArrayList<>();
     List<String> classSlot = new ArrayList<>();
     int l;
+
     @Nullable
     @Override
     @SuppressLint("NewApi")
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_stu_home, container, false);
-        listView=root.findViewById(R.id.lv1);
+        listView = root.findViewById(R.id.lv1);
         globaldata = (Data) this.getActivity().getApplication();
-        globaldata.setRealId("1954091");
+
 
         try {
+
+
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId()+"&type=true")
+                    .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=true")
                     .get()
                     .build();
             Response response = client.newCall(request).execute();
+
+
             String responseData = response.body().string();
             JSONObject jsonObject = new JSONObject(responseData);
-            Log.d("msg", jsonObject.getString("msg"));
-            Log.d("code", jsonObject.getString("code"));
+
+
             String code = jsonObject.getString("code");
-            JSONArray data = new JSONArray(jsonObject.getString("data"));
-
-            if (code.equals("0")) {
-
-                SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = spf.edit();
-                editor.putString("class_code", "2");
-                editor.apply();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        try {
-                            for (int i = 0; i < data.length(); i++) {
-                                JSONObject temp = data.getJSONObject(i);
-                                JSONArray a=temp.getJSONArray("classes");
-                                JSONObject classes=a.getJSONObject(i);
-                                String t = classes.optString("classCode", null);
-                                classCode.add(t);
-
-                                t = classes.optString("classTeacherId", null);
-                                classTeacherId.add(t);
-
-                                t = classes.optString("className", null);
-                                className.add(t);
-
-                                t = classes.optString("classSlot", null);
-                                classSlot.add(t);
 
 
+            if (!jsonObject.getString("data").equals("null")) {
+                JSONArray data = new JSONArray(jsonObject.getString("data"));
 
+                if (code.equals("0")) {
+
+                    SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("class_code", "2");
+                    editor.apply();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            try {
+                                for (int i = 0; i < data.length(); i++) {
+                                    JSONObject temp = data.getJSONObject(i);
+                                    JSONArray a = temp.getJSONArray("classes");
+                                    JSONObject classes = a.getJSONObject(i);
+                                    String t = classes.optString("classCode", null);
+                                    classCode.add(t);
+
+                                    t = classes.optString("classTeacherId", null);
+                                    classTeacherId.add(t);
+
+                                    t = classes.optString("className", null);
+                                    className.add(t);
+
+                                    t = classes.optString("classSlot", null);
+                                    classSlot.add(t);
+
+
+                                }
+                                l = data.length();
+                                Log.d("tag2", "" + l);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            l = data.length();
-                            Log.d("tag2", "" + l);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
-                    }
-                });
+                        }
+                    });
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast toastCenter = Toast.makeText(getActivity(), "请求成功12登陆失败", Toast.LENGTH_LONG);
+                            toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                            toastCenter.show();
+
+                        }
+                    });
+                }
             } else {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toastCenter = Toast.makeText(getActivity(), "请求成功，登陆失败", Toast.LENGTH_LONG);
+                        Toast toastCenter = Toast.makeText(getActivity(), "当前无课程", Toast.LENGTH_LONG);
                         toastCenter.setGravity(Gravity.CENTER, 0, 0);
                         toastCenter.show();
-
                     }
                 });
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
+                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败34登陆失败", Toast.LENGTH_LONG);
                     toastCenter.setGravity(Gravity.CENTER, 0, 0);
                     toastCenter.show();
                 }
@@ -135,37 +151,37 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
         }
 
 
-
-        simpleAdapter = new SimpleAdapter(getActivity(),getData(),R.layout.class_item,new String[]{"className","classCode","classSlot"},new int[]{R.id.tv1,R.id.tv2,R.id.tv3});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.class_item, new String[]{"className", "classCode", "classSlot"}, new int[]{R.id.tv1, R.id.tv2, R.id.tv3});
         listView.setAdapter(simpleAdapter);
         listView.setOnItemClickListener(this);
         return root;
     }
-    private List<Map<String,Object>> getData() {
 
-        List<Map<String,Object>> list= new ArrayList<>();
-        for(int i=0;i<l;i++){
-            Map  map = new HashMap();
-            map.put("className",className.get(i));
-            map.put("classCode",classCode.get(i));
-            map.put("classSlot",classSlot.get(i));
+    private List<Map<String, Object>> getData() {
+
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (int i = 0; i < l; i++) {
+            Map map = new HashMap();
+            map.put("className", className.get(i));
+            map.put("classCode", classCode.get(i));
+            map.put("classSlot", classSlot.get(i));
             list.add(map);
         }
         return list;
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String text = listView.getAdapter().getItem(position).toString();
-        Log.e("___","position:"+position+"text"+text );
+        Log.e("___", "position:" + position + "text" + text);
         globaldata.setClass_code(classCode.get(position));
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new class_detail_fragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
 
     }
 }

@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (!globaldata.getClass_code().equals("-1"))
                         {
+
                             fragment = new course_stu_fragment();
                             break;
                         }

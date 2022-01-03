@@ -49,6 +49,8 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
     List<String> signInRecordState = new ArrayList<>();
     List<String> signInRecordClassId = new ArrayList<>();
     List<String> signInRecordCode = new ArrayList<>();
+    List<String> stu_sign_state = new ArrayList<>();
+
 
 
 
@@ -88,7 +90,7 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
         globaldata = (Data) this.getActivity().getApplication();
 
 
-
+        //请求签到列表
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -169,7 +171,87 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
                 }
             });
         }
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.signl_ist, new String[]{"record", "date", "state1", "state2"}, new int[]{R.id.txt4, R.id.txt5, R.id.txt6});
+        //请求某一学生的某次签到是否签了
+        for(int i=0;i<l;i++)
+        {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("http://121.37.172.109:9000/back_end/signInRecord/getSignInState?sign_in_record_id="+signInRecordId.get(i)+"&student_id="+globaldata.getRealId())
+                        .get()
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+                JSONObject jsonObject = new JSONObject(responseData);
+                Log.d("msg", jsonObject.getString("msg"));
+                Log.d("code", jsonObject.getString("code"));
+                String code = jsonObject.getString("code");
+                String tof = jsonObject.getString("data");
+
+                if (code.equals("0")) {
+
+                    SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("class_code", "2");
+                    editor.apply();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("msg1",tof);
+                            if(tof.equals("true"))
+                            {
+                                stu_sign_state.add("已签到");
+                            }
+                            else
+                                stu_sign_state.add("未签到");
+                            Log.d("msg1",stu_sign_state.toString());
+                        }
+                    });
+                }
+                else if (code.equals("-1")) {
+
+                    SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("class_code", "2");
+                    editor.apply();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("msg1",tof);
+                                stu_sign_state.add("无此记录");
+                            Log.d("msg1",stu_sign_state.toString());
+
+                        }
+                    });
+                }
+                else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast toastCenter = Toast.makeText(getActivity(), "请求成功，登陆失败", Toast.LENGTH_SHORT);
+                            toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                            toastCenter.show();
+
+                        }
+                    });
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_SHORT);
+                        toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                        toastCenter.show();
+                    }
+                });
+            }
+
+        }
+
+
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.signl_ist, new String[]{"record", "date", "state1", "state2"}, new int[]{R.id.txt4, R.id.txt5, R.id.txt6,R.id.txt7});
         lv_sign_list.setAdapter(simpleAdapter);
 
         lv_sign_list.setOnItemClickListener(this);
@@ -177,14 +259,16 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
     }
 
     private List<Map<String, Object>> getData() {
-        String[] state2 = {"已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到", "已签到"};
 
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < l; i++) {
+            Log.d("msg11",stu_sign_state.toString());
+            Log.d("msg11",""+l);
+
             Map map = new HashMap();
             map.put("record", signInRecordTitle.get(i));
             map.put("state1", signInRecordState.get(i));
-            map.put("state2", state2[i]);
+            map.put("state2", stu_sign_state.get(i));
             map.put("date", signInRecordLaunchTime.get(i));
             list.add(map);
         }
@@ -205,14 +289,14 @@ public class sign_list_fragment extends Fragment implements AdapterView.OnItemCl
         String text = lv_sign_list.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
         Log.e("msg", signInRecordState.get(position));
-        if(!signInRecordState.get(position).equals("已截止")){
+        if(!signInRecordState.get(position).equals("已截止")&&stu_sign_state.get(position).equals("未签到")){
             //取值应该在sign_list里
             globaldata.setSign_in_record_id(signInRecordId.get(position));
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new sign_in_fragment()).commit();}
         else
         {
             Toast toastCenter = null;
-            toastCenter = Toast.makeText(getActivity(), "已截止", Toast.LENGTH_LONG);
+            toastCenter = Toast.makeText(getActivity(), "无法签到", Toast.LENGTH_LONG);
             toastCenter.setGravity(Gravity.CENTER, 0, 0);
             toastCenter.show();
         }

@@ -82,7 +82,7 @@ public class sign_in_fragment extends Fragment {
 
                                         Toast toastCenter = null;
                                         try {
-                                            toastCenter = Toast.makeText(getActivity(), jsonObject.getString("msg"), Toast.LENGTH_LONG);
+                                            toastCenter = Toast.makeText(getActivity(), jsonObject.getString("msg"), Toast.LENGTH_SHORT);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -101,7 +101,7 @@ public class sign_in_fragment extends Fragment {
                                     public void run() {
                                         Toast toastCenter = null;
                                         try {
-                                            toastCenter = Toast.makeText(getActivity(), jsonObject.getString("msg"), Toast.LENGTH_LONG);
+                                            toastCenter = Toast.makeText(getActivity(), jsonObject.getString("msg"), Toast.LENGTH_SHORT);
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
@@ -118,7 +118,7 @@ public class sign_in_fragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_LONG);
+                                    Toast toastCenter = Toast.makeText(getActivity(), "请求失败，登陆失败", Toast.LENGTH_SHORT);
                                     toastCenter.setGravity(Gravity.CENTER, 0, 0);
                                     toastCenter.show();
                                 }
