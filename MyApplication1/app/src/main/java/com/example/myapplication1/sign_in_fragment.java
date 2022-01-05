@@ -50,8 +50,7 @@ public class sign_in_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 globaldata.setSign_in_record_code(cd.getText().toString());
-                //赋值应该在登录里
-                globaldata.setRealId("1954091");
+
 
                 Log.d("msg", globaldata.getSign_in_record_id());
                 new Thread(new Runnable() {
