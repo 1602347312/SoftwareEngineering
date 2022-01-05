@@ -21,6 +21,9 @@ import androidx.fragment.app.Fragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,7 +31,7 @@ import okhttp3.Response;
 public class joinclass_stu_fragment extends Fragment {
 
     Button btn_joinclass_back,btn_joinclass_confirm;
-    EditText edt_join,edt_id;
+    EditText edt_join;
     Data globaldata;
     @SuppressLint("NewApi")
 
@@ -41,10 +44,8 @@ public class joinclass_stu_fragment extends Fragment {
         btn_joinclass_back = root.findViewById(R.id.btn_joinclass_back);
         btn_joinclass_confirm = root.findViewById(R.id.btn_joinclass_confirm);
         edt_join = root.findViewById(R.id.edt_join);
-        edt_id = root.findViewById(R.id.edt_id);
         globaldata = (Data) this.getActivity().getApplication();
-
-
+        Log.d("join","<<<");
         btn_joinclass_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,12 +53,56 @@ public class joinclass_stu_fragment extends Fragment {
                     @Override
                     public void run() {
 
-                    }
-                }).start();
+                        String _class_code = edt_join.getText().toString();
+                        try {
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("http://121.37.172.109:9000/back_end/class/joinClass?class_code=" + _class_code + "&student_id=" + globaldata.getRealId())
+                                    .get()
+                                    .build();
+                            Log.d("join","http://121.37.172.109:9000/back_end/class/joinClass?class_code=" + _class_code + "&student_id=" + globaldata.getRealId());
+                            Response response = client.newCall(request).execute();
+                            String responseData = response.body().string();
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            String code = jsonObject.getString("code");
+                            if (code.equals("0")) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast toastCenter = Toast.makeText(getActivity(), "加入成功", Toast.LENGTH_LONG);
+                                        //确定Toast显示位置，并显示
+                                        toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                        toastCenter.show();
+                                    }
+                                });
+                            } else {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast toastCenter = Toast.makeText(getActivity(), "加入失败", Toast.LENGTH_LONG);
+                                        toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                        toastCenter.show();
 
+                                    }
+                                });
+                            }
+
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast toastCenter = Toast.makeText(getActivity(), "加入失败1", Toast.LENGTH_LONG);
+                                    toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                    toastCenter.show();
+
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
-
         btn_joinclass_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

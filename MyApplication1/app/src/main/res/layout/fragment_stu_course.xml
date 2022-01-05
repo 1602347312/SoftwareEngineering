@@ -20,6 +20,7 @@
             android:showDividers="middle|beginning|end"
             >
             <TextView
+
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:text="星期一"
@@ -190,7 +191,7 @@
                 android:id="@+id/cls_14"
                 android:layout_width="80dp"
                 android:layout_height="120dp"
-                android:text="马克思主义原理xxxxxxxxxxxxxx"
+                android:text="马克思"
                 />
             <TextView
                 android:id="@+id/cls_24"
