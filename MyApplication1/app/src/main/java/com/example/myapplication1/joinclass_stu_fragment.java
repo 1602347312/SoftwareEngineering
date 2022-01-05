@@ -48,14 +48,9 @@ public class joinclass_stu_fragment extends Fragment {
         btn_joinclass_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                globaldata.setSign_in_record_code(edt_join.getText().toString());
-
-                Log.d("msg", globaldata.getSign_in_record_id());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
-
 
                     }
                 }).start();
