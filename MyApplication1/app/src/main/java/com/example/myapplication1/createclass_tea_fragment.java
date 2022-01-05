@@ -46,6 +46,7 @@ public class createclass_tea_fragment extends Fragment {
 
                 String[] slots = getResources().getStringArray(R.array.slots);
                 slot = slots[pos];
+                Log.d("tea",slot);
             }
 
             @Override

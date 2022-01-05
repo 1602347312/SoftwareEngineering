@@ -41,6 +41,7 @@ public class personal_stu_fragment extends Fragment {
     Button btn_change_info;
     Button btn_exit;
     Button btn_update_icon;
+    Button btn_join_class;
     Data globaldata;
     @Nullable
     @Override
@@ -55,6 +56,7 @@ public class personal_stu_fragment extends Fragment {
         realname = root.findViewById(R.id.realname);
         picture = root.findViewById(R.id.picture);
         btn_exit = root.findViewById(R.id.btn_exit);
+        btn_join_class=root.findViewById(R.id.btn_join_class);
         btn_update_icon = root.findViewById(R.id.btn_update_icon);
         String username = getActivity().getIntent().getStringExtra("username");
         String token = getActivity().getIntent().getStringExtra("token");
@@ -122,7 +124,14 @@ public class personal_stu_fragment extends Fragment {
 
             }
         });
+        btn_join_class.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new joinclass_stu_fragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
 
+            }
+        });
         return root;
     }
     public static Bitmap getBitmap(String path) throws IOException {  //显示图片函数

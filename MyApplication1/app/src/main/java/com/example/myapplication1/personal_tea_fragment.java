@@ -41,6 +41,7 @@ public class personal_tea_fragment extends Fragment {
     Button btn_change_info;
     Button btn_exit;
     Button btn_update_icon;
+    Button btn_create_class;
     Data globaldata;
     @Nullable
     @Override
@@ -56,6 +57,7 @@ public class personal_tea_fragment extends Fragment {
         picture = root.findViewById(R.id.picture);
         btn_exit = root.findViewById(R.id.btn_exit);
         btn_update_icon = root.findViewById(R.id.btn_update_icon);
+        btn_create_class=root.findViewById(R.id.btn_create_class);
         String username = getActivity().getIntent().getStringExtra("username");
         String token = getActivity().getIntent().getStringExtra("token");
         try {
@@ -98,6 +100,13 @@ public class personal_tea_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new modify_userinfo_fragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
+            }
+        });
+        btn_create_class.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new createclass_tea_fragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
             }
         });
