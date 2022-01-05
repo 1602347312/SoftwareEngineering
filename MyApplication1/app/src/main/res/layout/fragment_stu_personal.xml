@@ -51,25 +51,40 @@
             android:textColor="@color/purple_500"
             android:textSize="24sp"
 
-            app:layout_constraintBottom_toTopOf="@id/btn_change_info"
+            app:layout_constraintBottom_toTopOf="@id/btn_join_class"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/number" />
 
         <Button
-            android:id="@+id/btn_change_info"
+            android:id="@+id/btn_join_class"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="304dp"
+            android:layout_marginBottom="296dp"
             android:background="@drawable/button_bg"
-            android:text="修改信息"
+            android:text="加入课程"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent=".8" />
+
+        <Button
+            android:id="@+id/btn_change_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_bg"
+            android:text="修改信息"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_join_class"
             app:layout_constraintWidth_percent=".8" />
 
         <Button
@@ -85,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_change_info"
-            app:layout_constraintVertical_bias="0.182"
+            app:layout_constraintVertical_bias="0.163"
             app:layout_constraintWidth_percent=".8" />
 
         <Button

@@ -36,6 +36,10 @@
             android:exported="true"
             android:hardwareAccelerated="false" />
         <activity
+            android:name=".MainActivity_tea"
+            android:exported="true"
+            android:hardwareAccelerated="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
