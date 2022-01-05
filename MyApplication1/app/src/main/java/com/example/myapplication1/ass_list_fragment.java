@@ -69,14 +69,14 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
                                 }
                             });
                         }
@@ -99,9 +99,9 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
             Log.d("msg", jsonObject.getString("msg"));
             Log.d("code", jsonObject.getString("code"));
             String code = jsonObject.getString("code");
-            JSONArray data = new JSONArray(jsonObject.getString("data"));
 
             if (code.equals("0")) {
+                JSONArray data = new JSONArray(jsonObject.getString("data"));
 
                 SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = spf.edit();
@@ -148,7 +148,7 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast toastCenter = Toast.makeText(getActivity(), "请求成功，登陆失败", Toast.LENGTH_LONG);
+                        Toast toastCenter = Toast.makeText(getActivity(), "当前无作业记录", Toast.LENGTH_LONG);
                         toastCenter.setGravity(Gravity.CENTER, 0, 0);
                         toastCenter.show();
 

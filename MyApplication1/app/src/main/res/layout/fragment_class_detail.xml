@@ -16,6 +16,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textSize="25dp"
+
         android:id="@+id/class_detail_txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,30 +31,35 @@
         android:id="@+id/class_detail_txt_course"
         android:layout_width="116dp"
         android:layout_height="35dp"
+        android:layout_marginStart="196dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="84dp"
         android:text="高等数学1"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/class_detail_txt_slot"
-        android:layout_width="86dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="112dp"
+
+        android:layout_width="117dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="20dp"
         android:text="周一34"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/class_detail_txt_course" />
 
     <TextView
         android:id="@+id/class_detail_txt_code"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="96dp"
-        android:text="班级码：420244"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="24dp"
+        android:text="420244"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/class_detail_txt_slot" />
 
     <Button

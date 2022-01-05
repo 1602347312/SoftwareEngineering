@@ -54,8 +54,6 @@ public class class_detail_fragment extends Fragment {
         getClassDetail();//为上面4个textview赋值
         globaldata= (Data) this.getActivity().getApplication();
 
-        Log.d("quanju",globaldata.getClass_code());
-        Log.d("quanju",globaldata.getUsername());
 
 
         class_detail_btn_back.setOnClickListener(new View.OnClickListener() {
@@ -66,9 +64,9 @@ public class class_detail_fragment extends Fragment {
                     public void run() {
                         try {
                             if(globaldata.getIsStu().equals("学生"))
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_stu_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
                             else if(globaldata.getIsStu().equals("老师"))
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_tea_fragment()).commit();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_tea_fragment()).commit();
 
 
                         } catch (Exception e) {

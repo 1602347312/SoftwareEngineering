@@ -45,7 +45,6 @@ public class joinclass_stu_fragment extends Fragment {
         btn_joinclass_confirm = root.findViewById(R.id.btn_joinclass_confirm);
         edt_join = root.findViewById(R.id.edt_join);
         globaldata = (Data) this.getActivity().getApplication();
-        Log.d("join","<<<");
         btn_joinclass_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +99,7 @@ public class joinclass_stu_fragment extends Fragment {
                             });
                         }
                     }
-                });
+                }).start();
             }
         });
         btn_joinclass_back.setOnClickListener(new View.OnClickListener() {
