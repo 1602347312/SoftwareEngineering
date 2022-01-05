@@ -138,7 +138,7 @@ public class createclass_tea_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new home_stu_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new personal_tea_fragment()).commit();
 
                         }
                         catch (Exception e) {
@@ -146,7 +146,7 @@ public class createclass_tea_fragment extends Fragment {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new home_stu_fragment()).commit();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new personal_tea_fragment()).commit();
                                 }
                             });
                         }

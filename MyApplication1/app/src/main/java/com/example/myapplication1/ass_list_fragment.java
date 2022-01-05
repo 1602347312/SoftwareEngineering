@@ -207,6 +207,7 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
         String text = ass_lv1.getAdapter().getItem(position).toString();
         Log.e("msg", "position:" + position + "text" + text);
         Log.e("msg", assignmentId.get(position));
+
         globaldata.setass_id(Integer.parseInt(assignmentId.get(position)));
         globaldata.setorder(1);
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
