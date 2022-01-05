@@ -28,7 +28,7 @@ import okhttp3.Response;
 public class joinclass_stu_fragment extends Fragment {
 
     Button btn_joinclass_back,btn_joinclass_confirm;
-    EditText edt_join;
+    EditText edt_join,edt_id;
     Data globaldata;
     @SuppressLint("NewApi")
 
@@ -41,6 +41,7 @@ public class joinclass_stu_fragment extends Fragment {
         btn_joinclass_back = root.findViewById(R.id.btn_joinclass_back);
         btn_joinclass_confirm = root.findViewById(R.id.btn_joinclass_confirm);
         edt_join = root.findViewById(R.id.edt_join);
+        edt_id = root.findViewById(R.id.edt_id);
         globaldata = (Data) this.getActivity().getApplication();
 
 
