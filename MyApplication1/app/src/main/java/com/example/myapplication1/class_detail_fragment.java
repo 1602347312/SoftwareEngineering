@@ -66,7 +66,11 @@ public class class_detail_fragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new course_stu_fragment()).commit();
+                            if(globaldata.getIsStu().equals("学生"))
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_stu_fragment()).commit();
+                            else if(globaldata.getIsStu().equals("老师"))
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new home_tea_fragment()).commit();
+
 
                         } catch (Exception e) {
                             e.printStackTrace();

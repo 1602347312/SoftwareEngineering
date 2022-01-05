@@ -75,7 +75,6 @@ public class personal_tea_fragment extends Fragment {
                 number.setText(data.getString("realId"));
                 realname.setText(data.getString("realName"));
                 globaldata.setRealId(data.getString("realId"));
-//                picture.setImageURI(Uri.parse(data.getString("avatar")));
                 picture.setImageBitmap(getBitmap(data.getString("avatar")));
             } else {
                 number.setText("连接成功");
@@ -87,14 +86,7 @@ public class personal_tea_fragment extends Fragment {
             number.setText("连接失败");
             realname.setText("获取失败");
         }
-//        Bundle bundle =this.getArguments();//得到从Activity传来的数据
-//        String mess = null;
-//        if(bundle!=null){
-//            mess = bundle.getString("username");
-//
-//        }
-//        else mess="no";
-//        Log.d("msg",mess);
+
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

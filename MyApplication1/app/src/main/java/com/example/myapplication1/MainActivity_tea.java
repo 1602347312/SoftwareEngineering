@@ -60,7 +60,7 @@ public class MainActivity_tea extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tea_main);
         globaldata=(Data) getApplication();
         bottomNavigationView = findViewById(R.id.bottomNav_tea);
         username=getIntent().getStringExtra("username");
@@ -69,7 +69,7 @@ public class MainActivity_tea extends AppCompatActivity {
 
         //创建默认fragment
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new home_tea_fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new personal_tea_fragment()).commit();
         }
 
         //设置fragment的切换监听

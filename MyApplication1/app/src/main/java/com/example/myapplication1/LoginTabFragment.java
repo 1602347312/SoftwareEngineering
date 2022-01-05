@@ -97,13 +97,16 @@ public class LoginTabFragment extends Fragment {
                                         toastCenter.show();
                                     }
                                 });
-                                if(data.getString("type").equals("true")){//true学生 false老师
+                                if(data.getString("type").equals("true")){
+                                    //true学生 false老师
+                                    globaldata.setIsStu("学生");
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("username",_name);
                                     intent.putExtra("token",token);
                                     startActivity(intent);
                                 }
                                 else {
+                                    globaldata.setIsStu("老师");
                                     Intent intent = new Intent(getActivity(), MainActivity_tea.class);
                                     intent.putExtra("username",_name);
                                     intent.putExtra("token",token);

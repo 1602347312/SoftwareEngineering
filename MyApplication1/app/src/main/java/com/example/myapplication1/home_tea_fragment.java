@@ -60,11 +60,13 @@ public class home_tea_fragment extends Fragment implements AdapterView.OnItemCli
 
 
         try {
+           String  U="http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=false";
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=true")
+                    .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=false")
                     .get()
                     .build();
+            Log.d("tea",U);
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
             JSONObject jsonObject = new JSONObject(responseData);
@@ -74,6 +76,7 @@ public class home_tea_fragment extends Fragment implements AdapterView.OnItemCli
 
                 if (code.equals("0")) {
 
+
                     SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("class_code", "2");
@@ -81,12 +84,12 @@ public class home_tea_fragment extends Fragment implements AdapterView.OnItemCli
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-                            try {
+                            Log.d("tea",data.toString());
+                            try {Log.d("tea",""+data.length());
                                 for (int i = 0; i < data.length(); i++) {
-                                    JSONObject temp = data.getJSONObject(i);
-                                    JSONArray a = temp.getJSONArray("classes");
-                                    JSONObject classes = a.getJSONObject(i);
+                                    JSONObject classes = data.getJSONObject(i);
+//                                    JSONArray a = temp.getJSONArray("classes");
+//                                    JSONObject classes = a.getJSONObject(i);
                                     String t = classes.optString("classCode", null);
                                     classCode.add(t);
 
@@ -150,7 +153,11 @@ public class home_tea_fragment extends Fragment implements AdapterView.OnItemCli
     }
 
     private List<Map<String, Object>> getData() {
+        Log.d("tag2", "" + l);
 
+        Log.d("tea",className.toString());
+        Log.d("tea",classCode.toString());
+        Log.d("tea",classSlot.toString());
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < l; i++) {
             Map map = new HashMap();

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         //创建默认fragment
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new home_stu_fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new personal_stu_fragment()).commit();
         }
 
         //设置fragment的切换监听

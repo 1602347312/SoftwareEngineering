@@ -13,6 +13,33 @@ public class Data extends Application{
     private String token;
     private int order;     //order为1 选ass      order为2 选src      order为3 传头像
     private int ass_id;
+    private String isStu;
+
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public int getAss_id() {
+        return ass_id;
+    }
+
+    public void setAss_id(int ass_id) {
+        this.ass_id = ass_id;
+    }
+
+    public String getIsStu() {
+        return isStu;
+    }
+
+    public void setIsStu(String isStu) {
+        this.isStu = isStu;
+    }
+
     public int getass_id() {
         return ass_id;
     }
@@ -118,6 +145,7 @@ public class Data extends Application{
         token="-1";
         order=-1;
         ass_id=-1;
+        isStu="-1";
         super.onCreate();
     }
 }
