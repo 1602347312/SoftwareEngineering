@@ -88,21 +88,14 @@ public class src_list_fragment extends Fragment implements AdapterView.OnItemCli
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            if(globaldata.getIsStu().equals("学生"))
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
-                            else if(globaldata.getIsStu().equals("老师"))
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_tea_fragment()).commit();
-
+                        try {   //老师不用看资源列表 资源点进去就是输入名字上传
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
                         } catch (Exception e) {
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if(globaldata.getIsStu().equals("学生"))
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
-                                    else if(globaldata.getIsStu().equals("老师"))
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_tea_fragment()).commit();
+
                                 }
                             });
                         }

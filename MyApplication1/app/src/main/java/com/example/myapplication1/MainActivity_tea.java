@@ -136,7 +136,7 @@ public class MainActivity_tea extends AppCompatActivity {
                 uploadass(file);
                 break;
             case 2 ://src
-
+                uploadsrc(file);
                 break;
             case 3 ://修改头像
                 uploadFile(file);
@@ -304,6 +304,55 @@ public class MainActivity_tea extends AppCompatActivity {
                             @Override
                             public  void  run() {
                                 Toast toastCenter = Toast.makeText(getApplicationContext(), "上传作业成功", Toast.LENGTH_LONG);
+                                //确定Toast显示位置，并显示
+                                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                toastCenter.show();
+                            }
+                        });
+                        //上传成功
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Log.d("mas","G");
+                }
+            }
+        });
+    }
+    public void uploadsrc(File file) {
+        Log.d("mas", String.valueOf(file));
+        Log.d("mas","我是src");
+        OkHttpClient client = new OkHttpClient();
+        MultipartBody.Builder requestBody=new MultipartBody.Builder().setType(MultipartBody.FORM);
+        RequestBody fileBody = RequestBody.create(MediaType.parse("*/*"),file);
+        requestBody.addFormDataPart("file",file.getName(),fileBody);
+        requestBody.addFormDataPart("class_code", globaldata.getClass_code());
+        requestBody.addFormDataPart("real_id", globaldata.getRealId());
+        requestBody.addFormDataPart("title", globaldata.getMaterial_title());
+        Request request = new Request.Builder()
+                .url("http://121.37.172.109:9000/back_end/material/uploadMaterial")
+                .post(requestBody.build())
+                .build();
+        client.newBuilder().readTimeout(5000, TimeUnit.MILLISECONDS).build().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.d("mas","???");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if(response.isSuccessful()){
+                    try{
+                        JSONObject jsonObject=new JSONObject(response.body().string());
+                        Log.d("mas",jsonObject.getString("code"));
+                        Log.d("uploadass",jsonObject.getString("data"));
+                        runOnUiThread( new  Runnable() {
+                            @Override
+                            public  void  run() {
+                                Toast toastCenter = Toast.makeText(getApplicationContext(), "上传资源成功", Toast.LENGTH_LONG);
                                 //确定Toast显示位置，并显示
                                 toastCenter.setGravity(Gravity.CENTER, 0, 0);
                                 toastCenter.show();

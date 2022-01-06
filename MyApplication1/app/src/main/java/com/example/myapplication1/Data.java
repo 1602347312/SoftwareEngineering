@@ -14,6 +14,8 @@ public class Data extends Application{
     private int order;     //order为1 选ass      order为2 选src      order为3 传头像
     private int ass_id;
     private String isStu;
+    private String material_title;
+
 
 
     public int getOrder() {
@@ -146,6 +148,15 @@ public class Data extends Application{
         order=-1;
         ass_id=-1;
         isStu="-1";
+        material_title="-1";
         super.onCreate();
+    }
+
+    public String getMaterial_title() {
+        return material_title;
+    }
+
+    public void setMaterial_title(String material_title) {
+        this.material_title = material_title;
     }
 }

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/class_detail_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="返回"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="25dp"
+
+        android:id="@+id/class_detail_txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="9dp"
+        android:text="李四老师"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_icon" />
+
+    <TextView
+        android:id="@+id/class_detail_txt_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="64dp"
+        android:text="高等数学1"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/class_detail_txt_slot"
+
+        android:layout_width="117dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="20dp"
+        android:text="周一34"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_txt_course" />
+
+    <TextView
+        android:id="@+id/class_detail_txt_code"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="24dp"
+        android:text="420244"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_txt_slot" />
+
+    <Button
+        android:id="@+id/class_detail_btn_stu_list"
+        android:layout_width="136dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="268dp"
+        android:text="学生列表"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/class_detail_rand"
+        android:layout_width="136dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="268dp"
+        android:text="随机点人"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/class_detail_sign"
+        android:layout_width="136dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:text="考勤"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_btn_stu_list" />
+
+    <Button
+        android:id="@+id/class_detail_source"
+        android:layout_width="136dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:text="课程资源"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_rand" />
+
+    <ImageView
+        android:id="@+id/class_detail_icon"
+        android:layout_width="128dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/car_hailing" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

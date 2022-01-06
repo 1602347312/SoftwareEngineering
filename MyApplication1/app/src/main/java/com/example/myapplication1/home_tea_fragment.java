@@ -180,7 +180,7 @@ public class home_tea_fragment extends Fragment implements AdapterView.OnItemCli
         String text = listView.getAdapter().getItem(position).toString();
         Log.e("___", "position:" + position + "text" + text);
         globaldata.setClass_code(classCode.get(position));
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_tea_fragment()).commit();
 
     }
 }
