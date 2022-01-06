@@ -69,14 +69,15 @@ public class ass_list_fragment extends Fragment implements AdapterView.OnItemCli
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_fragment()).commit();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
+
+//                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_stu_fragment()).commit();
                                 }
                             });
                         }

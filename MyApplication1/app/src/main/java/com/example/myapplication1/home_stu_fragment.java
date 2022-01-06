@@ -73,7 +73,6 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
                 JSONArray data = new JSONArray(jsonObject.getString("data"));
 
                 if (code.equals("0")) {
-
                     SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("class_code", "2");
@@ -81,7 +80,6 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             try {
                                 for (int i = 0; i < data.length(); i++) {
                                     JSONObject temp = data.getJSONObject(i);

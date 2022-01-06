@@ -18,10 +18,10 @@
 
     <TextView
         android:id="@+id/txt1"
-        android:layout_width="163dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30dp"
-        android:layout_height="60dp"
         android:layout_marginTop="64dp"
         android:background="@drawable/translucent"
         android:text="XX课"

@@ -87,21 +87,9 @@ public class MainActivity extends AppCompatActivity {
                         fragment=new personal_stu_fragment();
                         break;
                     case R.id.course: {
+                        fragment = new course_stu_fragment();
+                        break;
 
-                        if (!globaldata.getClass_code().equals("-1"))
-                        {
-
-                            fragment = new course_stu_fragment();
-                            break;
-                        }
-                        else {
-                            fragment = new home_stu_fragment();
-                            Toast toastCenter = null;
-                            toastCenter = Toast.makeText(getApplicationContext(), "请选择班级", Toast.LENGTH_LONG);
-                            toastCenter.setGravity(Gravity.CENTER, 0, 0);
-                            toastCenter.show();
-                            break;
-                        }
                     }
                     default:
                         throw new IllegalStateException("Unexpected value: " + item.getItemId());
