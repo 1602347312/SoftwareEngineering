@@ -65,12 +65,16 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
                     .url("http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=true")
                     .get()
                     .build();
+            Log.d("tag2","http://121.37.172.109:9000/back_end/class/getClassList?real_id=" + globaldata.getRealId() + "&type=true");
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
             JSONObject jsonObject = new JSONObject(responseData);
             String code = jsonObject.getString("code");
             if (!jsonObject.getString("data").equals("null")) {
-                JSONArray data = new JSONArray(jsonObject.getString("data"));
+
+                JSONArray data = new JSONArray(jsonObject.getString("data"));//data是数组
+                JSONObject temp = data.getJSONObject(0);//temp是这个数组的第一个
+                JSONArray temp1 = temp.getJSONArray("classes");//temp1是classes这个数组
 
                 if (code.equals("0")) {
                     SharedPreferences spf = getActivity().getSharedPreferences("spf", Context.MODE_PRIVATE);
@@ -81,10 +85,9 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
                         @Override
                         public void run() {
                             try {
-                                for (int i = 0; i < data.length(); i++) {
-                                    JSONObject temp = data.getJSONObject(i);
-                                    JSONArray a = temp.getJSONArray("classes");
-                                    JSONObject classes = a.getJSONObject(i);
+                                for (int i = 0; i < temp1.length(); i++) {
+
+                                    JSONObject classes = temp1.getJSONObject(i);
                                     String t = classes.optString("classCode", null);
                                     classCode.add(t);
 
@@ -99,7 +102,7 @@ public class home_stu_fragment extends Fragment implements AdapterView.OnItemCli
 
 
                                 }
-                                l = data.length();
+                                l = temp1.length();
                                 Log.d("tag2", "" + l);
                             } catch (JSONException e) {
                                 e.printStackTrace();
