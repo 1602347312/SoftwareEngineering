@@ -29,8 +29,8 @@
 
     <TextView
         android:id="@+id/class_detail_txt_course"
-        android:layout_width="116dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="196dp"
         android:layout_marginTop="64dp"
         android:text="高等数学1"
