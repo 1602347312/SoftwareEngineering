@@ -116,5 +116,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/car_hailing" />
 
+    <Button
+        android:id="@+id/tea_ass_list"
+        android:layout_width="136dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="作业列表"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/class_detail_sign" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

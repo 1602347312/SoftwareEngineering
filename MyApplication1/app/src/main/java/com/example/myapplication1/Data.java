@@ -15,6 +15,7 @@ public class Data extends Application{
     private int ass_id;
     private String isStu;
     private String material_title;
+    private String assignmentId;
 
 
 
@@ -121,6 +122,14 @@ public class Data extends Application{
         this.token = token;
     }
 
+    public String getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(String assignmentId) {
+        this.assignmentId = assignmentId;
+    }
+
     public void show(){
         Log.d("data_username",username);
         Log.d("data_class_code",class_code);
@@ -149,6 +158,7 @@ public class Data extends Application{
         ass_id=-1;
         isStu="-1";
         material_title="-1";
+        assignmentId="-1";
         super.onCreate();
     }
 

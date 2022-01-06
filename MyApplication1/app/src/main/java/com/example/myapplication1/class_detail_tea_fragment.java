@@ -35,7 +35,7 @@ public class class_detail_tea_fragment extends Fragment {
     Button class_detail_btn_back, class_detail_btn_stu_list, class_detail_rand, class_detail_sign, class_detail_source;
     TextView class_detail_txt_name, class_detail_txt_course, class_detail_txt_slot, class_detail_txt_code,class_detail_rand_result;
     ImageView class_detail_icon;
-
+    Button ass;
 
     @Nullable
     @Override
@@ -55,7 +55,31 @@ public class class_detail_tea_fragment extends Fragment {
         getClassDetail();//为上面4个textview赋值
         globaldata= (Data) this.getActivity().getApplication();
 
+        ass=root.findViewById(R.id.tea_ass_list);
 
+        ass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new asslist_tea_fragment()).commit();
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                }
+                            });
+                        }
+
+                    }
+                }).start();
+            }
+        });
 
         class_detail_btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
