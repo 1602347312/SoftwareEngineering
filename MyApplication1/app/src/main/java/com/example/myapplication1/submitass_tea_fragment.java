@@ -1,9 +1,12 @@
 package com.example.myapplication1;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,12 +21,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -151,7 +165,7 @@ public class submitass_tea_fragment extends Fragment implements AdapterView.OnIt
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_tea_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new asslist_tea_fragment()).commit();
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -203,11 +217,133 @@ public class submitass_tea_fragment extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String text = ass_lv3.getAdapter().getItem(position).toString();
-        Log.e("msg", "position:" + position + "text" + text);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String url="http://121.37.172.109:9000/back_end/submits/downloadSubmission?assignment_id="+globaldata.getAssignmentId()+"&student_id="+studentId.get(position);
+                    Log.d("download:",url);
+                    OkHttpClient client = new OkHttpClient().newBuilder()
+                            .build();
+                    Request request = new Request.Builder()
+                            .url(url)
+                            .method("GET", null)
+                            .addHeader("Content-Type", "application/json")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(responseData);
+                    String code = jsonObject.getString("code");
+                    String file_url = jsonObject.getString("data");
+                    Log.d("file_url:",file_url);
+                    if(code.equals("0")){
+                        //申请写入权限
+                        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+                            Log.d("perm","1");
+                        }
+                        Log.d("dowmload", download(getContext(),file_url));
 
 
+                        getActivity().runOnUiThread( new  Runnable() {
+                            @Override
+                            public  void  run() {
+                                Toast toastCenter = Toast.makeText(getActivity(), "下载文件成功", Toast.LENGTH_LONG);
+                                //确定Toast显示位置，并显示
+                                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                toastCenter.show();
+                            }
+                        });
+
+
+                    }
+                    else {
+                        getActivity().runOnUiThread( new  Runnable() {
+                            @Override
+                            public  void  run() {
+                                Toast toastCenter = Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG);
+                                //确定Toast显示位置，并显示
+                                toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                                toastCenter.show();
+                            }
+                        });
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    getActivity().runOnUiThread( new  Runnable() {
+                        @Override
+                        public  void  run() {
+                            Toast toastCenter = Toast.makeText(getActivity(), "下载失败", Toast.LENGTH_LONG);
+                            //确定Toast显示位置，并显示
+                            toastCenter.setGravity(Gravity.CENTER, 0, 0);
+                            toastCenter.show();
+                        }
+                    });
+                }
+
+            }
+        }).start();
 
     }
 
+    @SuppressLint("NewApi")
+    public static String download(Context context,String docUrl)throws Exception, MalformedURLException {                           /***加载正文***/
+        //获取存储卡路径、构成保存文件的目标路径
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        String dirName = "";
+        //SD卡具有读写权限、指定附件存储路径为SD卡上指定的文件夹
+        dirName = Environment.getExternalStorageDirectory()+"/Signature/";
+        File f = new File(dirName);
+        if(!f.exists()){      //判断文件夹是否存在
+            f.mkdir();        //如果不存在、则创建一个新的文件夹
+        }
+        //准备拼接新的文件名
+        String[] list = docUrl.split("/");
+        String fileName = list[list.length-1];
+        fileName = dirName + fileName;
+        File file = new File(fileName);
+        if(file.exists()){    //如果目标文件已经存在
+            file.delete();    //则删除旧文件
+        }
+        //1M的数据缓冲
+        byte[] bs = new byte[1024*1024];
+        //读取到的数据长度
+        int len;
+        try{
+
+            //通过文件地址构建url对象
+            URL url = new URL(docUrl);
+            Log.d("url", String.valueOf(url));
+            //获取链接
+            URLConnection conn = url.openConnection();
+            Log.d("conn", String.valueOf(conn));
+            //创建输入流
+            InputStream is = url.openStream();
+            Log.d("is", String.valueOf(is));
+            //获取文件的长度
+            int contextLength = conn.getContentLength();
+            Log.d("length", String.valueOf(contextLength));
+            //输出的文件流
+            OutputStream os = new FileOutputStream(file);
+            Log.d("os", String.valueOf(os));
+            //开始读取
+            while((len = is.read(bs)) != -1){
+                os.write(bs,0,len);
+            }
+            //完毕关闭所有连接
+            os.close();
+            is.close();
+        } catch(FileNotFoundException e){
+            fileName = null;
+            System.out.println("无法加载文件");
+            throw e;
+        }catch(IOException e){
+            fileName = null;
+            System.out.println("获取连接失败");
+            throw e;
+        }
+        return fileName;
+    }
 }

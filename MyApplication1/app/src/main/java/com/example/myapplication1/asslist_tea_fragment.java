@@ -155,7 +155,7 @@ public class asslist_tea_fragment extends Fragment implements AdapterView.OnItem
                     @Override
                     public void run() {
                         try {
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new personal_tea_fragment()).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new class_detail_tea_fragment()).commit();
 
                         } catch (Exception e) {
                             e.printStackTrace();

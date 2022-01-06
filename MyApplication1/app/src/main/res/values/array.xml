@@ -5,27 +5,31 @@
         <item>周一 3-4</item>
         <item>周一 5-6</item>
         <item>周一 7-8</item>
+        <item>周一 9-10</item>
 
         <item>周二 1-2</item>
         <item>周二 3-4</item>
         <item>周二 5-6</item>
         <item>周二 7-8</item>
+        <item>周二 9-10</item>
 
         <item>周三 1-2</item>
         <item>周三 3-4</item>
         <item>周三 5-6</item>
         <item>周三 7-8</item>
+        <item>周三 9-10</item>
 
         <item>周四 1-2</item>
         <item>周四 3-4</item>
         <item>周四 5-6</item>
         <item>周四 7-8</item>
+        <item>周四 9-10</item>
 
         <item>周五 1-2</item>
         <item>周五 3-4</item>
         <item>周五 5-6</item>
         <item>周五 7-8</item>
-
+        <item>周五 9-10</item>
 
     </string-array>
     <string-array name="time">
